@@ -28,8 +28,8 @@
         <div style="padding: 0 1em; font-weight: 600;">{{ view.name }} {{ view.width }}x{{
           view.height }}</div>
         <div>
-          <q-btn icon="fullscreen" @click="makeFullScreen(i)" round outline flat></q-btn>
-          <q-btn icon="close" @click="view.enabled = false" round outline flat></q-btn>
+          <q-btn title="full screen" icon="fullscreen" @click="makeFullScreen(i)" round outline flat></q-btn>
+          <q-btn title="close" icon="close" @click="view.enabled = false" round outline flat></q-btn>
         </div>
       </div>
       <svg :id="`viewComp` + i" :viewBox="`0 0 ${view.width} ${view.height}`"
