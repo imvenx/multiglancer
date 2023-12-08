@@ -22,14 +22,19 @@
       </foreignObject>
     </svg> -->
 
-  <template v-for="view in appState.views.filter(x => x.enabled == true)">
+  <template v-for="view, i in appState.views.filter(x => x.enabled == true)">
     <div style="text-align:center; display:inline-block; margin:1em">
       <div style="display: flex;justify-content: space-between; align-items: center;">
         <div style="padding: 0 1em; font-weight: 600;">{{ view.name }} {{ view.width }}x{{
-          view.height }}</div> <q-btn icon="close" @click="view.enabled = false" round outline flat></q-btn>
+          view.height }}</div>
+        <div>
+          <q-btn icon="fullscreen" @click="makeFullScreen(i)" round outline flat></q-btn>
+          <q-btn icon="close" @click="view.enabled = false" round outline flat></q-btn>
+        </div>
       </div>
-      <svg :viewBox="`0 0 ${view.width} ${view.height}`" :width="view.width * appState.zoom * view.scale"
-        :height="view.height * appState.zoom * view.scale" style="box-shadow: 0 0 10px black;">
+      <svg :id="`viewComp` + i" :viewBox="`0 0 ${view.width} ${view.height}`"
+        :width="view.width * appState.zoom * view.scale" :height="view.height * appState.zoom * view.scale"
+        style="box-shadow: 0 0 10px black;">
         <foreignObject :width="view.width" :height="view.height">
           <iframe :src="appState.url" :width="view.width" :height="view.height" />
         </foreignObject>
@@ -50,6 +55,10 @@
 
 <script setup lang="ts">
 import { appState } from 'src/stores/appState';
+
+function makeFullScreen(i: number) {
+  document.getElementById('viewComp' + i)?.requestFullscreen()
+}
 
 </script>
 
