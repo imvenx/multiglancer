@@ -36,7 +36,7 @@
         :width="view.width * appState.zoom * view.scale" :height="view.height * appState.zoom * view.scale"
         style="box-shadow: 0 0 10px black;">
         <foreignObject :width="view.width" :height="view.height">
-          <iframe :src="appState.url" :width="view.width" :height="view.height" />
+          <iframe style="border: none;" :src="appState.url" :width="view.width" :height="view.height" />
         </foreignObject>
       </svg>
       <q-slider :min="0.1" :max="2" :step="0.1" v-model="view.scale" />
