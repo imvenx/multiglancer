@@ -24,8 +24,9 @@
 
   <template v-for="view in appState.views.filter(x => x.enabled == true)">
     <div style="text-align:center; display:inline-block; margin:1em">
-      <div style="display:flex">
-        <p>{{ view.name }} {{ view.width }}x{{ view.height }}</p>
+      <div style="display: flex;justify-content: space-between; align-items: center;">
+        <div style="padding: 0 1em; font-weight: 600;">{{ view.name }} {{ view.width }}x{{
+          view.height }}</div> <q-btn icon="close" @click="view.enabled = false" round outline flat></q-btn>
       </div>
       <svg :viewBox="`0 0 ${view.width} ${view.height}`" :width="view.width * appState.zoom * view.scale"
         :height="view.height * appState.zoom * view.scale" style="box-shadow: 0 0 10px black;">
@@ -33,7 +34,7 @@
           <iframe :src="appState.url" :width="view.width" :height="view.height" />
         </foreignObject>
       </svg>
-      <q-slider :min="0.1" :max="1" :step="0.1" v-model="view.scale" />
+      <q-slider :min="0.1" :max="2" :step="0.1" v-model="view.scale" />
     </div>
   </template>
 
@@ -49,7 +50,6 @@
 
 <script setup lang="ts">
 import { appState } from 'src/stores/appState';
-
 
 </script>
 
