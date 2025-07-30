@@ -5,7 +5,7 @@
         <!-- <div class=" q-gutter-y-md column"> -->
         <div>
           <q-toolbar>
-            <q-btn @click="toggleLeftDrawer" round dense flat icon="add_to_queue" class="q-mr-xs" />
+            <q-btn @click="toggleLeftDrawer" outline icon="add_to_queue" color="green" class="q-mr-xs" />
             <!-- <q-avatar>
               <q-icon name="visibility" />
             </q-avatar> -->
